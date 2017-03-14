@@ -79,6 +79,17 @@ class Game extends React.Component {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
 
+    const moves = history.map((step, move) => {
+      const desc = move ?
+        "Move Number: " + move :
+        "Game Start";
+      return (
+        <li>
+          <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
+        </li>
+      );
+    });
+
     return (
       <div className="game">
         <div className="game-board">
@@ -89,7 +100,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{ status }</div>
-          <ol>{/* TODO */}</ol>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
